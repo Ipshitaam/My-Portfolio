@@ -163,61 +163,6 @@ h3 {
     flex: 1;
 }
 
-/* Coding Profiles Section */
-.coding-profiles {
-    margin-top: 1rem;
-}
-
-.profile-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 0.5rem;
-}
-
-.profile-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-}
-
-.profile-btn:before {
-    content: '';
-    width: 20px;
-    height: 20px;
-    margin-right: 0.5rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.profile-btn.codeforces:before {
-    background-image: url('https://cdn.iconscout.com/icon/free/png-256/free-code-forces-3629285-3031869.png');
-}
-
-.profile-btn.codechef:before {
-    background-image: url('https://cdn.codechef.com/sites/all/themes/abessive/cc-logo.png');
-}
-
-.profile-btn.leetcode:before {
-    background-image: url('https://leetcode.com/static/images/LeetCode_logo_rvs.png');
-}
-
-.profile-btn.hackerrank:before {
-    background-image: url('https://hrcdn.net/fcore/assets/work/header/hackerrank_logo-21e2867566.svg');
-}
-
-.profile-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(187, 134, 252, 0.3);
-}
-
 /* Skills Section */
 .skills-container {
     display: grid;
@@ -249,7 +194,7 @@ h3 {
 }
 
 /* Experience and Projects Sections */
-.experience-item, .project-item {
+.experience-item, .project-item, .publication-item {
     margin-bottom: 2rem;
     padding: 1.5rem;
     background-color: var(--surface-color);
@@ -257,7 +202,7 @@ h3 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.experience-item:hover, .project-item:hover {
+.experience-item:hover, .project-item:hover, .publication-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -275,6 +220,11 @@ h3 {
 }
 
 .experience-item li, .project-item li {
+    margin-bottom: 0.5rem;
+}
+
+/* Publications Section */
+.publication-item p {
     margin-bottom: 0.5rem;
 }
 

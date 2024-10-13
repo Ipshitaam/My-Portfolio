@@ -33,39 +33,41 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Theme toggle functionality
-    const themeToggle = document.createElement('button');
-    themeToggle.classList.add('theme-toggle');
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i><i class="fas fa-moon"></i>';
-    document.body.appendChild(themeToggle);
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+        });
 
-    themeToggle.addEventListener('click', function() {
-        document.body.classList.toggle('light-mode');
-        localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
-    });
-
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        document.body.classList.add('light-mode');
-    }
-
-    // Dynamic year for footer
-    const currentYear = new Date().getFullYear();
-    document.querySelector('footer').innerHTML = `© ${currentYear} Ipshita Ahmed Moon. All rights reserved.`;
-
-    // Typing effect for the tagline
-    const tagline = document.querySelector('.tagline');
-    const text = tagline.textContent;
-    tagline.textContent = '';
-    let i = 0;
-
-    function typeWriter() {
-        if (i < text.length) {
-            tagline.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50);
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
         }
     }
 
-    typeWriter();
+    // Active navigation link update on scroll
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Initialize AOS (Animate on Scroll) if it's being used
+    if (typeof AOS !== 'undefined') {
+        AOS.init();
+    }
 });
